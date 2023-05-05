@@ -31,4 +31,22 @@ $\implies \Re(\Phi), \Im(\Phi)$: 正則関数，$\Re(\Phi(B_t)), \Im(\Phi(B_t))$
 
 実はより強い結果が言える．
 
+\begin{screen}
+    \setcounter{thm}{17}
+    \begin{thm}\label{thm:718}
+        \begin{itemize}
+            \item 
+            $\Phi:\compl\to\compl$:（定数関数でない）正則関数
+            \item 
+            $C_t=\int_0^t\abs{\Phi'(B_s)}^2ds(=\gen{\int_0^{\cdot}\abs{\Phi'(B_s)}dB_s, \int_0^{\cdot}\abs{\Phi'(B_s)}dB_s}_t)$ for $\Forall t\ge0$
+            \item 
+            $z\in\compl$
+        \end{itemize}
+        $\implies \Exists \Gamma$: $P_z$ の下で $\Phi(z)$ からスタートするcomplex BM s.t. $P_z$-a.s. $\Forall t\ge0, \Phi(B_t)=\Gamma_{C_t}.$
+    \end{thm}
+\end{screen}
+
+言い換えると，正則関数の下でのcomplex BMの像はtime-changed complex BM（平面BMの\textbf{共形不変性 (conformal invariance property)}）.
+Theorem \ref{thm:718}を $\Phi$ が領域 $D\subset \compl$ において定まり，かつ正則である場合（$z\in D$ の場合）に拡張することは可能（多くの応用に有用）．
+
 \end{document}

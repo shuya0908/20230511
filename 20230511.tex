@@ -20,7 +20,7 @@
     \item 
     $d=2$
     \item 
-    $B_t=(X_t, Y_t)$: 2次元BM
+    $B_t=(X_t, Y_t)$: 2-dim. BM
     $\xrightarrow{\real^2\text{ と }\compl\text{ を同一視}} B_t=X_t+iY_t$: \textbf{complex BM}
     \item 
     $B$: $P_z$ の下で $z$ からスタート for $\Forall z\in\compl$
@@ -33,12 +33,12 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
 
 \begin{screen}
     \setcounter{thm}{17}
-    \begin{thm}\label{thm:718}
+    \begin{thm}\label{thm:718}~
         \begin{itemize}
             \item 
             $\Phi:\compl\to\compl$:（定数関数でない）正則関数
             \item 
-            $C_t=\int_0^t\abs{\Phi'(B_s)}^2ds(=\gen{\int_0^{\cdot}\abs{\Phi'(B_s)}dB_s, \int_0^{\cdot}\abs{\Phi'(B_s)}dB_s}_t)$ for $\Forall t\ge0$
+            $C_t=\int_0^t\abs{\Phi'(B_s)}^2ds$ for $\Forall t\ge0$
             \item 
             $z\in\compl$
         \end{itemize}
@@ -46,8 +46,12 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
     \end{thm}
 \end{screen}
 
-言い換えると，正則関数の下でのcomplex BMの像はtime-changed complex BM（平面BMの\textbf{共形不変性 (conformal invariance property)}）.
-Theorem \ref{thm:718}を $\Phi$ が領域 $D\subset \compl$ において定まり，かつ正則である場合（$z\in D$ の場合）に拡張することは可能（多くの応用に有用）．
-$\Phi(B)^T$ についても同様の表現が成り立つ（$T$: BMによる $D$ のfirst exit time）．
+言い換えると，complex BMの正則関数による像は，時間変更されたcomplex BMとなる（この性質を2-dim. BMの\textbf{共形不変性 (conformal invariance property)}という）．
+\begin{itemize}
+    \item 
+    Theorem \ref{thm:718}を $\Phi$ が領域 $D\subset \compl$ において定まり，かつ正則である場合（$z\in D$ の場合）にまで拡張することが可能（多くの応用に有用）．
+    \item 
+    $\Phi(B)^T$ についても同様の表現が成り立つ（$T$: BMによる $D$ のfirst exit time）．
+\end{itemize}
 
 \end{document}

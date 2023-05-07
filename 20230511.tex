@@ -15,7 +15,6 @@
 \section{Brownian Motion and Partial Differential Equations}
 \setcounter{subsection}{4}
 \subsection{Planar Brownian Motion and Holomorphic Functions}
-
 \begin{itemize}
     \item 
     $d=2$
@@ -53,5 +52,42 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
     \item 
     $\Phi(B)^T$ についても同様の表現が成り立つ（$T$: BMによる $D$ のfirst exit time）．
 \end{itemize}
+
+\begin{proof}
+    $\Phi:=g+ih\implies $ It\^{o}'s formulaより
+    \begin{align}
+        g(B_t)
+        &= g(X_t,Y_t) \\
+        &= 
+        \begin{multlined}[t]
+            g(X_0, Y_0)
+            + \int_0^t\frac{\partial g}{\partial x}(X_s, Y_s)dX_s
+            + \int_0^t\frac{\partial g}{\partial y}(X_s, Y_s)dY_s \\
+            + \frac{1}{2}\int_0^t\frac{\partial^2 g}{\partial x^2}(X_s, Y_s)ds
+            + \frac{1}{2}\int_0^t\frac{\partial^2 g}{\partial y^2}(X_s, Y_s)ds
+        \end{multlined}\\
+        &= g(z)
+        + \int_0^t\frac{\partial g}{\partial x}(B_s)dX_s
+        + \int_0^t\frac{\partial g}{\partial y}(B_s)dY_s
+        + \frac{1}{2}\int_0^t\Delta g(B_s)ds \\
+        &= g(z)
+        + \int_0^t\frac{\partial g}{\partial x}(B_s)dX_s
+        + \int_0^t\frac{\partial g}{\partial y}(B_s)dY_s
+        \quad\text{(CLM)}.
+    \end{align}
+    同様に
+    $$
+    h(B_t)
+    =h(z)
+    + \int_0^t\frac{\partial h}{\partial x}(B_s)dX_s
+    + \int_0^t\frac{\partial h}{\partial y}(B_s)dY_s
+    $$
+    もCLMとなるので，
+    $$
+    M_t:= g(B_t), \quad
+    N_t:= h(B_t)
+    $$
+    と定める．
+\end{proof}
 
 \end{document}

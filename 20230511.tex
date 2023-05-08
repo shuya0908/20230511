@@ -54,22 +54,13 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
 \end{itemize}
 
 \begin{proof}
-    $\Phi:=g+ih\implies $ It\^{o}'s formulaより
+    $\Phi:=g+ih\implies $ It\^{o}'s formulaと $g$ が調和であることより
     \begin{align}
         g(B_t)
-        &= g(X_t,Y_t) \\
-        &= 
-        \begin{multlined}[t]
-            g(X_0, Y_0)
-            + \int_0^t\frac{\partial g}{\partial x}(X_s, Y_s)dX_s
-            + \int_0^t\frac{\partial g}{\partial y}(X_s, Y_s)dY_s \\
-            + \frac{1}{2}\int_0^t\frac{\partial^2 g}{\partial x^2}(X_s, Y_s)ds
-            + \frac{1}{2}\int_0^t\frac{\partial^2 g}{\partial y^2}(X_s, Y_s)ds
-        \end{multlined}\\
         &= g(z)
         + \int_0^t\frac{\partial g}{\partial x}(B_s)dX_s
         + \int_0^t\frac{\partial g}{\partial y}(B_s)dY_s
-        + \frac{1}{2}\int_0^t\Delta g(B_s)ds \\
+        + \frac{1}{2}\int_0^t\UB{\Delta g(B_s)}{=0}ds \\
         &= g(z)
         + \int_0^t\frac{\partial g}{\partial x}(B_s)dX_s
         + \int_0^t\frac{\partial g}{\partial y}(B_s)dY_s
@@ -88,6 +79,50 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
     N_t:= h(B_t)
     $$
     と定める．
+    さらにC-R関係式
+    $$
+    \frac{\partial g}{\partial x} = \frac{\partial h}{\partial y},\quad
+    \frac{\partial g}{\partial y} = -\frac{\partial h}{\partial x}
+    $$
+    より $\gen{M, N}_t=0, \gen{M, M}_t=\gen{N, N}_t=C_t.$
+
+    \begin{screen}
+        $\because)$
+        \begin{align}
+            \gen{M, N}_t
+            &= \gen{g(z)+\int_0^{\cdot}\frac{\partial g}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial g}{\partial y}(B_s)dY_s,
+            h(z)+\int_0^{\cdot}\frac{\partial h}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial h}{\partial y}(B_s)dY_s}_t \\
+            &= \int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial h}{\partial x}(B_s)ds
+            + \int_0^t\frac{\partial g}{\partial y}(B_s)\frac{\partial h}{\partial y}(B_s)ds \\
+            &= -\int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial g}{\partial y}(B_s)ds
+            + \int_0^t\frac{\partial g}{\partial y}(B_s)\frac{\partial g}{\partial x}(B_s)ds = 0.
+        \end{align}
+
+        また，
+        $$
+        \Phi'
+        = \frac{d\Phi}{dz}
+        = \frac{\partial g}{\partial x} - i\frac{\partial g}{\partial y}
+        = \frac{\partial h}{\partial y} + i\frac{\partial h}{\partial x}
+        \implies \abs{\Phi'}^2
+        = \abs{\nabla g}^2
+        = \abs{\nabla h}^2
+        $$
+        であることから
+        \begin{align}
+            \gen{M, M}_t
+            &= \gen{g(z)+\int_0^{\cdot}\frac{\partial g}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial g}{\partial y}(B_s)dY_s,
+            g(z)+\int_0^{\cdot}\frac{\partial g}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial g}{\partial y}(B_s)dY_s}_t \\
+            &= \int_0^t\abs{\nabla g(B_s)}^2ds
+            = \int_0^t\abs{\Phi'(B_s)}^2ds
+            = C_t, \\
+            \gen{N, N}_t
+            &= \int_0^t\abs{\nabla h(B_s)}^2ds
+            = \int_0^t\abs{\Phi'(B_s)}^2ds
+            = C_t.
+        \end{align}
+    \end{screen}
+    
 \end{proof}
 
 \end{document}

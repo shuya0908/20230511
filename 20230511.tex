@@ -165,4 +165,22 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
 
 2-dim. BMの共形不変性を応用して，\textbf{skew-product representation}と呼ばれる2-dim. BMの極座標平面での分解を考えることができる．
 
+\begin{screen}
+    \begin{thm}[skew-product representation]\label{thm:719}~
+        \begin{itemize}
+            \item 
+            $z\in\compl\setminus\{0\}$
+            \item 
+            $z:=\exp{(r+i\theta)}\ (r\in\real, \theta\in(-\pi, \pi])$
+        \end{itemize}
+        $\implies $ indep. linear BMs $\beta$: $r$ スタート，$\gamma$: $\theta$ スタート under $P_z$ が存在し，以下を満たす：
+        
+        $P_z$-a.s.で $\Forall t\ge0$ に対し
+        $$
+        B_t=\exp{(\beta_{H_t}+i\gamma_{H_t})},\quad
+        \text{where }H_t:=\int_0^t\frac{ds}{\abs{B_s}^2}.
+        $$
+    \end{thm}
+\end{screen}
+
 \end{document}

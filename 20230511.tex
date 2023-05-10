@@ -131,7 +131,36 @@ $\implies \Re(\Phi), \Im(\Phi)$: 調和関数（by C-R関係式），$\Re(\Phi(B
     $$
     
     一方，2-dim. BMの再帰性より，開球 $\clb$ に対し $\set{t\ge0}{B_t\in\clb}$: 非有界であるため，$\Phi(B_t)=M_t+iN_t$ は有限な極限値をもたない．
-    ゆえに $P_z$-a.s.で $C_\infty=\infty.$
+    ゆえに $P_z$-a.s.で $C_\infty=\infty.$ \\
+    $\implies P_z$ の下で $M-g(z), N-h(z)$ に対しProposition 5.15の仮定
+    \begin{itemize}
+        \item 
+        $P_z$-a.s. $\Forall t\ge0, \gen{M-g(z), M-g(z)}_t=\gen{N-h(z), N-h(z)}_t(=C_t)$
+        \item 
+        $P_z$-a.s. $\Forall t\ge0, \gen{M-g(z), N-h(z)}_t=0$
+        \item 
+        $P_z$-a.s. $\Forall t\ge0, \gen{M-g(z), M-g(z)}_{\infty}=\gen{N-h(z), N-h(z)}_{\infty}=\infty$
+    \end{itemize}
+    が成り立つので，0スタートのindep. real BM $\beta, \gamma$ が存在し
+    $$
+    M_t=g(z)+\beta_{C_t},\quad
+    N_t=h(z)+\gamma_{C_t}.
+    $$
+
+    ここで
+    $$
+    \Gamma_t
+    := \Phi(z)+\beta_t+i\gamma_t
+    $$
+    と定めると，これは $\Phi(z)$ スタートのcomplex BM under $P_z$ であり，$\Forall t\ge0$ に対し
+    \begin{align}
+        \Gamma_{C_t}
+        &= \Phi(z)+\beta_{C_t}+i\gamma_{C_t} \\
+        &= \Phi(z)+(M_t-g(z))+i(N_t-h(z)) \\
+        &= \Phi(z)+(M_t+iN_t)-(g(z)+ih(z)) \\
+        &= \Phi(z)+\Phi(B_t)-\Phi(z) \\
+        &= \Phi(B_t).
+    \end{align}
 \end{proof}
 
 \end{document}

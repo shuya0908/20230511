@@ -174,6 +174,30 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
     \end{thm*}
 \end{screen}
 
+\begin{proof}
+    $H_{\cdot}$: $C_{\cdot}$ の逆関数
+    $\implies M_H, N_H$: indep. real BMsより $\Phi(B_H)$: complex BM.
+
+    \begin{screen}
+        $\because)$
+        $\Forall t\ge0$ に対し $\gen{M, M}_t=\gen{N, N}_t=C_t, \gen{M, N}_t=0$ より
+        \begin{gather}
+            \gen{M_{H}, M_{H}}_t
+            = \gen{N_{H}, N_{H}}_t
+            = C_{H_t}
+            = t, \\
+            \gen{M_{H}, N_{H}}_t = 0.
+        \end{gather}
+    \end{screen}
+
+    したがって $(\Phi(B_{H_s\wedge T}))_{s\ge0}$: $\Phi(z)$ スタートのstopped complex BM under $P_z$.
+    $$
+    \Gamma_s
+    := \Phi(B_{H_s\wedge T})
+    $$
+    と定めると，$P_z$-a.s. $\Forall t\ge0$ に対し $\Gamma_{C_t}=\Phi(B_{t\wedge T})=\Phi(B_t)^T.$
+\end{proof}
+
 2-dim. BMの共形不変性を応用して，\textbf{skew-product representation}と呼ばれる2-dim. BMの極座標平面での分解を考えることができる．
 
 \begin{screen}

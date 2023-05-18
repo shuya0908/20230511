@@ -333,13 +333,13 @@ $$
 $$
 
 これより $\lvert B\rvert$ はlinear BM $\beta$ に依存して定まることがわかる．
-これは $(\lvert B_t\rvert)_{t\ge0}$ がMarkov過程，i.e. 2-dim. Bessel過程であることと関係している（Bessel過程の簡単な議論はExercise 6.24やSect. 8.4.3を参照）．
+これは $(\lvert B_t\rvert, t\ge0)$ がMarkov過程，i.e. 2-dim. Bessel過程であることと関係している（Bessel過程の簡単な議論はExercise 6.24やSect. 8.4.3を参照）．
 
-一方，$\theta_t:=\arg B_t=\gamma_{H_t}\implies \theta=(\theta_t)_{t\ge0}$ はMarkov過程でない．
+一方，$\theta_t:=\arg B_t=\gamma_{H_t}\implies \theta=(\theta_t, t\ge0)$ はMarkov過程でない．
 
 \begin{screen}
     $\because)$（直感的な説明）
-    時刻 $t$ までの $\theta$ の過去の挙動は $\lvert B_t\rvert$ の現在の値に関する情報を与える（例えば $\theta_t$ が時刻 $t$ の直前に非常に高速に振動した場合，$\lvert B_t\rvert$ は小さくなる）．
+    時刻 $t$ までの $\theta$ の過去の挙動は $\lvert B_t\rvert$ の現在の値に関する情報を与える（例えば $\theta_t$ が時刻 $t$ の直前に非常に高速に振動した場合，$\lvert B_t\rvert$ は小さくなる）\nazo．
     したがって過程 $\theta$ の未来の挙動に関する情報をも与えるため，Markov性が成り立たない．
 \end{screen}
 

@@ -227,7 +227,7 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
         \item
         $\exp({\Gamma_t})=\Phi(\Gamma_t)=:Z_{C_t}$（$Z$: $(\Phi(r+i\theta)=)z$ スタート）
         \item
-        $C_t=\int_0^t\abs{\exp({\Gamma_s})}^2ds=\int_0^t(\exp({\Gamma_s^1}))^2\abs{\UB{\exp({i\Gamma_s^2})}{=1}}^2ds=\int_0^t\exp({2\Gamma_s^1})ds.$
+        $C_t=\int_0^t\abs{\Phi'(\Gamma_s)}^2ds=\int_0^t\abs{\exp({\Gamma_s})}^2ds=\int_0^t(\exp({\Gamma_s^1}))^2\abs{\UB{\exp({i\Gamma_s^2})}{=1}}^2ds=\int_0^t\exp({2\Gamma_s^1})ds.$
     \end{enumerate}
 
     ここで $H_{\cdot}$ を $C_{\cdot}$ の逆関数とすると，逆関数定理 ($(f^{-1})'(f(a))=1/f'(a)$) より
@@ -267,6 +267,15 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
 
     \begin{screen}
         $\because)$
+        \begin{align}
+            &B_t=\exp{(\beta_{\int_0^t\abs{B_u}^{-2}du}
+            + i\gamma_{\int_0^t\abs{B_u}^{-2}du})} \\
+            &\iff \beta_t
+            = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}},\quad
+            \gamma_t
+            = \arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}
+        \end{align}
+        を示す．
         $\Forall t\ge0$ に対し
         $$
         \inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du} = t
@@ -293,8 +302,8 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
                 \item 
                 \begin{align}
                     \beta_{\fbox{$\int_0^t\abs{B_u}^{-2}du$}}
-                    &= \log\abs{B_t} \\
-                    &= \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\fbox{$\int_0^t\abs{B_u}^{-2}du$}}}}
+                    = \log\abs{B_t}
+                    = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\fbox{$\int_0^t\abs{B_u}^{-2}du$}}}}
                 \end{align}
                 $\implies \beta_t=\log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}}.$
                 \item 
@@ -304,8 +313,8 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
         \end{description}
     \end{screen}
 
-    $\beta, \gamma$ は $B$ の決定論的な関数なので $B\beq{\text{(d)}}Z.$
-    したがって $\beta+i\gamma\beq{\text{(d)}}\Gamma$ であるため所望の結果を得る．
+    $\beta, \gamma$ は $B$ の決定論的な関数なので $(B_t, t\ge0)\beq{\text{(d)}}(Z_t, t\ge0).$
+    したがって $(\beta_t+i\gamma_t, t\ge0)\beq{\text{(d)}}(\Gamma_t, t\ge0)$ であるため所望の結果を得る．
 \end{proof}
 
 （skew-product representationに関するコメント）

@@ -90,16 +90,15 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
             h(z)+\int_0^{\cdot}\frac{\partial h}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial h}{\partial y}(B_s)dY_s}_t \\
             &= \int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial h}{\partial x}(B_s)ds
             + \int_0^t\frac{\partial g}{\partial y}(B_s)\frac{\partial h}{\partial y}(B_s)ds \\
-            &= -\int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial g}{\partial y}(B_s)ds
+            &\beq{\text{C-R}} -\int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial g}{\partial y}(B_s)ds
             + \int_0^t\frac{\partial g}{\partial y}(B_s)\frac{\partial g}{\partial x}(B_s)ds = 0.
         \end{align}
 
         また，
         $$
         \Phi'
-        = \frac{d\Phi}{dz}
         = \frac{\partial g}{\partial x} - i\frac{\partial g}{\partial y}
-        = \frac{\partial h}{\partial y} + i\frac{\partial h}{\partial x}
+        \beq{\text{C-R}} \frac{\partial h}{\partial y} + i\frac{\partial h}{\partial x}
         \implies \abs{\Phi'}^2
         = \abs{\nabla g}^2
         = \abs{\nabla h}^2
@@ -119,14 +118,14 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
         \end{align}
     \end{screen}
 
-    Exercise 4.24より $P_z$-a.s.で
+    Sect. 7.5 の最後の Remark より，2-dim. BM の再帰性から，開球 $\clb$ を $\abs{\Phi'}\ge q (>0)$ を満たすように選ぶと $P_z$-a.s. で $\int_0^\infty\bm{1}_{\clb}(B_s)ds=\infty$ なので
     $$
-    \{C_\infty<\infty\}
-    = \{\lim_{t\to\infty}M_t\text{ が存在し有限}\}
-    = \{\lim_{t\to\infty}N_t\text{ が存在し有限}\}.
+    C_\infty
+    = \int_0^\infty\abs{\Phi'(B_s)}^2ds
+    \ge q^2\int_0^\infty\bm{1}_{\clb}(B_s)ds
+    = \infty.
     $$
     
-    一方，2-dim. BMの再帰性より，開球 $\clb$ に対し $\set{t\ge0}{B_t\in\clb}$: 非有界であるため，$\Phi(B_t)=M_t+iN_t$ は有限な極限値をもたない．
     ゆえに $P_z$-a.s.で $C_\infty=\infty.$ \\
     $\implies P_z$ の下で $M-g(z), N-h(z)$ に対しProposition 5.15の仮定
     \begin{itemize}

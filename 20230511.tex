@@ -231,7 +231,7 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
         $C_t=\int_0^t\abs{\Phi'(\Gamma_s)}^2ds=\int_0^t\abs{\exp({\Gamma_s})}^2ds=\int_0^t(\exp({\Gamma_s^1}))^2\abs{\UB{\exp({i\Gamma_s^2})}{=1}}^2ds=\int_0^t\exp({2\Gamma_s^1})ds.$
     \end{enumerate}
 
-    ここで $H_{\cdot}$ を $C_{\cdot}$ の逆関数とすると，逆関数定理 ($(f^{-1})'(f(a))=1/f'(a)$) より
+    ここで $(H_s, s\ge0)$ を $(C_t, t\ge0)$ の逆関数とすると，逆関数定理 ($(f^{-1})'(f(a))=1/f'(a)$) より
     \begin{align}
         H_s
         = \int_0^s\frac{du}{C'_{H_u}}
@@ -256,7 +256,7 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
     が得られる．
     あとは $Z$ でなく $B$ について同様のことが言えれば結論が示せる．
 
-    $B_t$ の偏角の連続なdetermination\nazo を $\arg B_t$ と書く（ただし $\arg B_0=\theta$）．
+    $B_t$ の偏角の連続な determination を $\arg B_t$ と書く（ただし $\arg B_0=\theta$）．
     Theorem \ref{thm:719}の主張は
     \begin{align}
         \beta_t
@@ -268,14 +268,14 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
 
     \begin{screen}
         $\because)$
-        \begin{align}
-            &B_t=\exp{(\beta_{\int_0^t\abs{B_u}^{-2}du}
+        \begin{gather}
+            B_t=\exp{(\beta_{\int_0^t\abs{B_u}^{-2}du}
             + i\gamma_{\int_0^t\abs{B_u}^{-2}du})} \\
-            &\iff \beta_t
-            = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}},\quad
+            \iff \beta_t
+            = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}},\quad
             \gamma_t
-            = \arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}
-        \end{align}
+            = \arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}
+        \end{gather}
         を示す．
         $\Forall t\ge0$ に対し
         $$
@@ -314,8 +314,17 @@ $\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（The
         \end{description}
     \end{screen}
 
-    $\beta, \gamma$ は $B$ の決定論的な関数なので $(B_t, t\ge0)\beq{\text{(d)}}(Z_t, t\ge0).$
-    したがって $(\beta_t+i\gamma_t, t\ge0)\beq{\text{(d)}}(\Gamma_t, t\ge0)$ であるため所望の結果を得る．
+    以上より
+    \begin{itemize}
+        \item 
+        $\beta, \gamma$: $B$ の決定論的な関数
+        \item 
+        $\Gamma^1, \Gamma^2$: $Z$ の決定論的な関数
+        \item 
+        $(B_t)_{t\ge0}\beq{\text{(d)}}(Z_t)_{t\ge0}$
+    \end{itemize}
+
+    $\implies (\beta_t+i\gamma_t)_{t\ge0}\beq{\text{(d)}}(\Gamma_t)_{t\ge0}$ であるため所望の結果を得る．
 \end{proof}
 
 （skew-product representationに関するコメント）

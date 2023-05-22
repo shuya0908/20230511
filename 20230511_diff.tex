@@ -1,0 +1,422 @@
+\documentclass{jsarticle}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL before.tex   Mon May 22 17:50:32 2023
+%DIF ADD after.tex    Mon May 22 17:50:06 2023
+% \documentclass[b4paper,landscape,14pt]{jsarticle}
+\title{}
+\author{}
+\date{
+% \number\year 年 \number\month 月
+}
+\usepackage{fenrir_v1_4_0}
+\usepackage{ethm_v1_1_0}
+\mathtoolsset{showonlyrefs=true}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\newcommand\erase{\bgroup\markoverwith{\textcolor{red}{\rule[.5ex]{2pt}{0.4pt}}}\ULon} %eraseコマンドを定義 %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{red}{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\erase{#1}}}               %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+% \maketitle
+\setcounter{section}{6}
+\section{Brownian Motion and Partial Differential Equations}
+\setcounter{subsection}{4}
+\subsection{Planar Brownian Motion and Holomorphic Functions}
+\begin{itemize}
+    \item 
+    $d=2$
+    \item 
+    $B_t=(X_t, Y_t)$: 2-dim. BM ($X, Y$: indep. real BM)
+    $\xrightarrow{\real^2\text{ と }\compl\text{ を同一視}} B_t=X_t+iY_t$: \textbf{complex BM}
+    \item 
+    $B$: $P_z$ の下で $z$ からスタート for $\Forall z\in\compl$
+\end{itemize}
+
+$\Phi(=g+ih):\compl\to\compl$: 正則関数\DIFaddbegin \DIFadd{（$\rightarrow g, h$ に対し C-R 関係式成立） }\DIFaddend \\
+$\implies g, h$: 調和関数（by C-R関係式），$g(B_t), h(B_t)$: CLM（Theorem \ref{thm:718}の証明内で示す）
+
+\smallskip
+
+実はより強い結果が言える：
+\begin{screen}
+    \setcounter{thm}{17}
+    \begin{thm}[conformal invariance property]\label{thm:718}~
+        \begin{itemize}
+            \item 
+            $\Phi:\compl\to\compl$:（定数関数でない）正則関数
+            \item 
+            $C_t=\int_0^t\abs{\Phi'(B_s)}^2ds$ for $\Forall t\ge0$
+            \item 
+            $(B_0=)z\in\compl$
+        \end{itemize}
+        $\implies \Exists \Gamma=(\Gamma_t)_{t\ge0}$: $P_z$ の下で $\Phi(z)$ からスタートするcomplex BM s.t. $P_z$-a.s. $\Forall t\ge0, \Phi(B_t)=\Gamma_{C_t}.$
+    \end{thm}
+\end{screen}
+
+言い換えると，$z$ スタートのcomplex BMの正則関数 $\Phi$ による像は，$\Phi(z)$ スタートのcomplex BMを時間変更したものとなる（この性質を2-dim. BMの\textbf{共形不変性 (conformal invariance property)}という）．
+\DIFaddbegin \DIFadd{この定理は $\Phi$ が $D (\subset \compl)$ 上で定まり，正則関数となる場合にまで拡張可能（後述）．
+}\DIFaddend 
+
+\begin{proof}
+    $\Phi:=g+ih\implies $ It\^{o}'s formulaと $g$ が調和であることより
+    \begin{align}
+        g(B_t)
+        &= g(z)
+        + \int_0^t\frac{\partial g}{\partial x}(B_s)dX_s
+        + \int_0^t\frac{\partial g}{\partial y}(B_s)dY_s
+        + \frac{1}{2}\int_0^t\UB{\Delta g(B_s)}{=0}ds \\
+        &= g(z)
+        + \int_0^t\frac{\partial g}{\partial x}(B_s)dX_s
+        + \int_0^t\frac{\partial g}{\partial y}(B_s)dY_s
+        \quad\text{(CLM)}.
+    \end{align}
+    同様に
+    $$
+    h(B_t)
+    =h(z)
+    + \int_0^t\frac{\partial h}{\partial x}(B_s)dX_s
+    + \int_0^t\frac{\partial h}{\partial y}(B_s)dY_s
+    $$
+    もCLMとなるので，
+    $$
+    M_t:= g(B_t), \quad
+    N_t:= h(B_t)
+    $$
+    と定める．
+    さらにC-R関係式
+    $$
+    \frac{\partial g}{\partial x} = \frac{\partial h}{\partial y},\quad
+    \frac{\partial g}{\partial y} = -\frac{\partial h}{\partial x}
+    $$
+    より $\gen{M, N}_t=0, \gen{M, M}_t=\gen{N, N}_t=C_t.$
+
+    \begin{screen}
+        $\because)$
+        \begin{align}
+            \gen{M, N}_t
+            &= \gen{g(z)+\int_0^{\cdot}\frac{\partial g}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial g}{\partial y}(B_s)dY_s,
+            h(z)+\int_0^{\cdot}\frac{\partial h}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial h}{\partial y}(B_s)dY_s}_t \\
+            &= \int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial h}{\partial x}(B_s)ds
+            + \int_0^t\frac{\partial g}{\partial y}(B_s)\frac{\partial h}{\partial y}(B_s)ds \\
+            &\DIFdelbegin \DIFdel{= }\DIFdelend \DIFaddbegin \beq{\text{C-R}} \DIFaddend -\int_0^t\frac{\partial g}{\partial x}(B_s)\frac{\partial g}{\partial y}(B_s)ds
+            + \int_0^t\frac{\partial g}{\partial y}(B_s)\frac{\partial g}{\partial x}(B_s)ds = 0.
+        \end{align}
+
+        また，
+        $$
+        \Phi'
+        = \DIFdelbegin \DIFdel{\frac{d\Phi}{dz}
+        = }\DIFdelend \frac{\partial g}{\partial x} - i\frac{\partial g}{\partial y}
+        \DIFdelbegin \DIFdel{= }\DIFdelend \DIFaddbegin \beq{\text{C-R}} \DIFaddend \frac{\partial h}{\partial y} + i\frac{\partial h}{\partial x}
+        \implies \abs{\Phi'}^2
+        = \abs{\nabla g}^2
+        = \abs{\nabla h}^2
+        $$
+        であることから
+        \begin{align}
+            \gen{M, M}_t
+            &= \gen{g(z)+\int_0^{\cdot}\frac{\partial g}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial g}{\partial y}(B_s)dY_s,
+            g(z)+\int_0^{\cdot}\frac{\partial g}{\partial x}(B_s)dX_s+\int_0^{\cdot}\frac{\partial g}{\partial y}(B_s)dY_s}_t \\
+            &= \int_0^t\abs{\nabla g(B_s)}^2ds
+            = \int_0^t\abs{\Phi'(B_s)}^2ds
+            = C_t, \\
+            \gen{N, N}_t
+            &= \int_0^t\abs{\nabla h(B_s)}^2ds
+            = \int_0^t\abs{\Phi'(B_s)}^2ds
+            = C_t.
+        \end{align}
+    \end{screen}
+
+    \DIFdelbegin \DIFdel{Exercise 4.24}\DIFdelend \DIFaddbegin \DIFadd{Sect. 7.5 の最後の Remark }\DIFaddend より\DIFdelbegin \DIFdel{$P_z$-a.s.で
+    }\begin{displaymath}
+    \DIFdel{\{C_\infty<\infty\}
+    = \{\lim_{t\to\infty}M_t\text{ が存在し有限}\}
+    = \{\lim_{t\to\infty}N_t\text{ が存在し有限}\}.
+    }\end{displaymath}%DIFAUXCMD
+%DIFDELCMD <     
+
+%DIFDELCMD <     %%%
+\DIFdel{一方}\DIFdelend ，2-dim. BM の再帰性\DIFdelbegin \DIFdel{より}\DIFdelend \DIFaddbegin \DIFadd{から}\DIFaddend ，開球 $\clb$ \DIFdelbegin \DIFdel{に対し $\set{t\ge0}{B_t\in\clb}$: 非有界であるため，$\Phi(B_t)=M_t+iN_t$ は有限な極限値}\DIFdelend を \DIFdelbegin \DIFdel{も}\DIFdelend \DIFaddbegin \DIFadd{$\abs{\Phi'}\ge q (>0)$ を満}\DIFaddend た\DIFdelbegin \DIFdel{ない．
+    }\DIFdelend \DIFaddbegin \DIFadd{すように選ぶと $P_z$-a.s. で
+    }$$
+    \DIFadd{C_\infty
+    = \int_0^\infty\abs{\Phi'(B_s)}^2ds
+    \ge q^2\UB{\int_0^\infty\bm{1}_{\clb}(B_s)ds}{=\infty}
+    = \infty.
+    }$$
+
+    \DIFaddend ゆえに $P_z$-a.s.で $C_\infty=\infty.$ \\
+    $\implies P_z$ の下で $M-g(z), N-h(z)$ に対しProposition 5.15の仮定
+    \begin{itemize}
+        \item 
+        $P_z$-a.s. $\Forall t\ge0, \gen{M-g(z), M-g(z)}_t=\gen{N-h(z), N-h(z)}_t(=C_t)$
+        \item 
+        $P_z$-a.s. $\Forall t\ge0, \gen{M-g(z), N-h(z)}_t=0$
+        \item 
+        $P_z$-a.s. $\Forall t\ge0, \gen{M-g(z), M-g(z)}_{\infty}=\gen{N-h(z), N-h(z)}_{\infty}(=C_\infty)=\infty$
+    \end{itemize}
+    が成り立つので，0スタートのindep. real BMs $\beta, \gamma$ が存在し
+    $$
+    M_t=g(z)+\beta_{C_t},\quad
+    N_t=h(z)+\gamma_{C_t}.
+    $$
+
+    ここで
+    $$
+    \Gamma_t
+    := \Phi(z)+\beta_t+i\gamma_t
+    $$
+    と定めると，これは $\Phi(z)$ スタートのcomplex BM under $P_z$ であり，$\Forall t\ge0$ に対し
+    \begin{align}
+        \Gamma_{C_t}
+        &= \Phi(z)+\beta_{C_t}+i\gamma_{C_t} \\
+        &= \Phi(z)+(M_t-g(z))+i(N_t-h(z)) \\
+        &= \Phi(z)+(M_t+iN_t)-(g(z)+ih(z)) \\
+        &= \Phi(z)+\Phi(B_t)-\Phi(z) \\
+        &= \Phi(B_t).
+    \end{align}
+\end{proof}
+
+\begin{screen}
+    \begin{thm*}[extended conformal invariance property]~
+        \begin{itemize}
+            \item 
+            $\Phi:D(\subset \compl)\to\compl$:（定数関数でない）正則関数
+            \item 
+            $T:=\inf\{t\ge0:B_t\notin D\}$
+            \item 
+            \DIFdelbegin \DIFdel{$C_t=\int_0^{t\wedge T}\abs{\Phi'(B_s)}^2ds$ for $\Forall t\ge0$
+            }\DIFdelend \DIFaddbegin \DIFadd{$C_t=\int_0^t\abs{\Phi'(B_s)}^2ds$ for $\Forall t\in [0, T]$
+            }\DIFaddend \item 
+            $(B_0=)z\in D$
+        \end{itemize}
+        \DIFdelbegin \DIFdel{$\implies \Exists \Gamma=(\Gamma_t)_{t\ge0}$}\DIFdelend \DIFaddbegin \DIFadd{$\implies \Exists \Gamma=(\Gamma_t)_{t\in [0, T]}$}\DIFaddend : $P_z$ の下で $\Phi(z)$ からスタートするcomplex BM s.t. $P_z$-a.s. \DIFdelbegin \DIFdel{$\Forall t\ge0, \Phi(B_t)^T=\Gamma_{C_t}.$
+    }\DIFdelend \DIFaddbegin \DIFadd{$\Forall t\in [0, T], \Phi(B_t)=\Gamma_{C_t}.$
+    }\DIFaddend \end{thm*}
+\end{screen}
+
+\begin{proof}
+    \DIFdelbegin \DIFdel{$H_{\cdot}$: $C_{\cdot}$ }\DIFdelend \DIFaddbegin \DIFadd{$C_{\cdot}: [0, T]\ni t\mapsto\int_0^t\abs{\Phi'(B_s)}^2ds\in[0, \UB{S}{:=C_T}]$: 全単射より逆関数が存在する．
+    $(H_s, s\in [0, S])$: $(C_t, t\in [0, T])$ }\DIFaddend の逆関数
+    $\implies M_H, N_H$: indep. real BMsより $\Phi(B_H)$: complex BM.
+
+    \begin{screen}
+        $\because)$
+        \DIFdelbegin \DIFdel{$\Forall t\ge0$ }\DIFdelend \DIFaddbegin \DIFadd{$\Forall t\in [0, T]$ }\DIFaddend に対し $\gen{M, M}_t=\gen{N, N}_t=C_t, \gen{M, N}_t=0$ より
+        \begin{gather}
+            \gen{M_{H}, M_{H}}_t
+            = \gen{N_{H}, N_{H}}_t
+            = C_{H_t}
+            = t, \\
+            \gen{M_{H}, N_{H}}_t = 0.
+        \end{gather}
+    \end{screen}
+
+    したがって \DIFdelbegin \DIFdel{$(\Phi(B_{H_s\wedge T}))_{s\ge0}$}\DIFdelend \DIFaddbegin \DIFadd{$(\Phi(B_{H_s}))_{s\in [0, S]}$}\DIFaddend : $\Phi(z)$ スタートのstopped complex BM under $P_z$.
+    $$
+    \Gamma_s
+    := \Phi(B\DIFdelbegin \DIFdel{_{H_s\wedge T}}\DIFdelend \DIFaddbegin \DIFadd{_{H_s}}\DIFaddend )
+    $$
+    と定めると，$P_z$-a.s. \DIFdelbegin \DIFdel{$\Forall t\ge0$ }\DIFdelend \DIFaddbegin \DIFadd{$\Forall t\in [0, T]$ }\DIFaddend に対し \DIFdelbegin \DIFdel{$\Gamma_{C_t}=\Phi(B_{t\wedge T})=\Phi(B_t)^T$}\DIFdelend \DIFaddbegin \DIFadd{$\Gamma_{C_t}=\Phi(B_t)$}\DIFaddend （\DIFdelbegin \DIFdel{$C_T$ }\DIFdelend \DIFaddbegin \DIFadd{$S$ }\DIFaddend は $\Gamma$ に\DIFdelbegin \DIFdel{おけ}\DIFdelend \DIFaddbegin \DIFadd{よ}\DIFaddend る $\Phi(D)$ からのfirst exit timeとなる）．
+\end{proof}
+
+2-dim. BMの共形不変性を応用して，\textbf{skew-product representation}と呼ばれる2-dim. BMの極座標平面での分解を考えることができる．
+
+\begin{screen}
+    \begin{thm}[skew-product representation]\label{thm:719}~
+        \begin{itemize}
+            \item 
+            $(B_0=)z\in\compl\setminus\{0\}$
+            \item 
+            $z:=\exp{(r+i\theta)}\ (r\in\real, \theta\in(-\pi, \pi])$
+        \end{itemize}
+        $\implies $ indep. linear BMs $\beta$: $r$ スタート，$\gamma$: $\theta$ スタート under $P_z$ が存在し，以下を満たす：
+
+        $P_z$-a.s.で $\Forall t\ge0$ に対し
+        $$
+        B_t=\exp{(\beta_{H_t}+i\gamma_{H_t})},\quad
+        \text{where }H_t:=\int_0^t\frac{ds}{\abs{B_s}^2}.
+        $$
+    \end{thm}
+\end{screen}
+
+\begin{proof}
+    （この定理の「自然な」証明方法は一般化したTheorem \ref{thm:718}（共形不変性）を $\Phi(z):=\log z$ に対し適用する方法であるが，この $\Phi$ は多価関数であり，Riemann面への拡張を考える必要があるため，異なる方法で証明する．）
+
+    $\Gamma_t:=\Gamma_t^1+i\Gamma_t^2$: $r+i\theta$ スタートのcomplex BMとする（$\Gamma_t^1$: $r$ スタート，$\Gamma_t^2$: $\theta$ スタートのreal BMs）．\\
+    $\implies $ Theorem \ref{thm:718}を $\Phi(\xi):=e^{\xi}\ (\xi\in\compl)$ に対し適用すると
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        $\exp({\Gamma_t})=\Phi(\Gamma_t)=:Z_{C_t}$（$Z$: $(\Phi(r+i\theta)=)z$ スタート）
+        \item
+        $C_t=\int_0^t\abs{\Phi'(\Gamma_s)}^2ds=\int_0^t\abs{\exp({\Gamma_s})}^2ds=\int_0^t(\exp({\Gamma_s^1}))^2\abs{\UB{\exp({i\Gamma_s^2})}{=1}}^2ds=\int_0^t\exp({2\Gamma_s^1})ds.$
+    \end{enumerate}
+
+    ここで \DIFdelbegin \DIFdel{$H_{\cdot}$ }\DIFdelend \DIFaddbegin \DIFadd{$(H_s, s\ge0)$ }\DIFaddend を \DIFdelbegin \DIFdel{$C_{\cdot}$ }\DIFdelend \DIFaddbegin \DIFadd{$(C_t, t\ge0)$ }\DIFaddend の逆関数とすると，逆関数定理 ($(f^{-1})'(f(a))=1/f'(a)$) より
+    \begin{align}
+        H_s
+        = \int_0^s\frac{du}{C'_{H_u}}
+        = \int_0^s\exp{(-2\Gamma_{H_u}^1)}du
+        = \int_0^s\abs{Z_u}^{-2}du.
+    \end{align}
+
+    \begin{screen}
+        $\because)$
+        \begin{itemize}
+            \item 
+            $C_t=\int_0^t\exp({2\Gamma_s^1})ds\implies C'_{H_u}=\exp({2\Gamma_{H_u}^1})$
+            \item             $\abs{Z_{C_t}}=\exp{(\Gamma_t^1)}\xrightarrow{t=H_u}\abs{Z_u}=\exp{(\Gamma_{H_u}^1)}$
+        \end{itemize}
+    \end{screen}
+
+    以上より $P_z$-a.s.で $\Forall t\ge0$ に対し
+    $$
+    Z_t=\exp{(\Gamma_{H_t}^1+i\Gamma_{H_t}^2)},\quad
+    \text{where }H_t:=\int_0^t\frac{ds}{\abs{Z_s}^2}
+    $$
+    が得られる．
+    あとは $Z$ でなく $B$ について同様のことが言えれば結論が示せる．
+
+    $B_t$ の偏角の連続な determination \DIFdelbegin %DIFDELCMD < \nazo %%%
+\DIFdelend を $\arg B_t$ と書く（ただし $\arg B_0=\theta$）．
+    Theorem \ref{thm:719}の主張は
+    \begin{align}
+        \beta_t
+        &= \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}} \\
+        \gamma_t
+        &= \arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}
+    \end{align}
+    $\implies \beta$: $r$ スタート，$\gamma$: $\theta$ スタートのindep. real BMs under $P_z$ であることと同値．
+
+    \begin{screen}
+        $\because)$
+        \DIFdelbegin \begin{align*}
+            &\DIFdel{B_t=\exp{(\beta_{\int_0^t\abs{B_u}^{-2}du}
+            + i\gamma_{\int_0^t\abs{B_u}^{-2}du})} }\\
+            &\DIFdel{\iff \beta_t
+            = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}},\quad
+            \gamma_t
+            = \arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}
+        }\end{align*}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \begin{gather}
+            \DIFadd{B_t=\exp{(\beta_{\int_0^t\abs{B_u}^{-2}du}
+            + i\gamma_{\int_0^t\abs{B_u}^{-2}du})} }\\
+            \DIFadd{\iff \beta_t
+            = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}},\quad
+            \gamma_t
+            = \arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}
+        }\end{gather}\DIFaddend 
+        を示す．
+        $\Forall t\ge0$ に対し
+        $$
+        \inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du} = t
+        $$
+        であることに注意する．
+
+        \begin{description}
+            \item[$\impliedby$)] 
+            \begin{align}
+                \text{(RHS)}
+                &= \exp{(\beta_{\int_0^t\abs{B_u}^{-2}du}
+                + i\gamma_{\int_0^t\abs{B_u}^{-2}du})} \\
+                &= \exp{(\log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}}}
+                + i\arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\int_0^t\abs{B_u}^{-2}du}})} \\
+                &= \exp{(\log\abs{B_t}
+                + i\arg B_t)} \\
+                &= \abs{B_t}\exp{(i\arg B_t)} \\
+                &= B_t
+                = \text{(LHS)}.
+            \end{align}
+            \item[$\implies$)] 
+            $B_t=\exp{(\beta_{\int_0^t\abs{B_u}^{-2}du})}\exp{(i\gamma_{\int_0^t\abs{B_u}^{-2}du})}=\abs{B_t}\exp{(i\arg B_t)}$ より
+            \begin{itemize}
+                \item 
+                \begin{align}
+                    \beta_{\fbox{$\int_0^t\abs{B_u}^{-2}du$}}
+                    = \log\abs{B_t}
+                    = \log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>\fbox{$\int_0^t\abs{B_u}^{-2}du$}}}}
+                \end{align}
+                $\implies \beta_t=\log\abs{B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}}.$
+                \item 
+                $\gamma_{\int_0^t\abs{B_u}^{-2}du} = \arg B_t
+                \implies \gamma_t=\arg B_{\inf\set{s\ge0}{\int_0^s\abs{B_u}^{-2}du>t}}.$
+            \end{itemize}
+        \end{description}
+    \end{screen}
+
+    \DIFaddbegin \DIFadd{以上より
+    }\begin{itemize}
+        \item 
+        \DIFaddend $\beta, \gamma$\DIFdelbegin \DIFdel{は }\DIFdelend \DIFaddbegin \DIFadd{: }\DIFaddend $B$ の決定論的な関数
+        \DIFdelbegin \DIFdel{な}\DIFdelend \DIFaddbegin \item 
+        \DIFadd{$\Gamma^1, \Gamma^2$: $Z$ }\DIFaddend の\DIFaddbegin \DIFadd{決定論的な関数
+        }\item 
+        \DIFadd{$(B_t)_{t\ge0}\beq{\text{(d)}}(Z_t)_{t\ge0}$
+    }\end{itemize}
+
+    \DIFadd{$\implies (\beta_t+i\gamma_t)_{t\ge0}\beq{\text{(d)}}(\Gamma_t)_{t\ge0}$ }\DIFaddend で\DIFdelbegin \DIFdel{$(B_t, t\ge0)\beq{\text{(d)}}(Z_t, t\ge0).$
+    したがって $(\beta_t+i\gamma_t, t\ge0)\beq{\text{(d)}}(\Gamma_t, t\ge0)$ で}\DIFdelend あるため所望の結果を得る．
+\end{proof}
+
+（skew-product representationに関するコメント）
+$H_{\cdot}$ の逆像は $\int_0^{\cdot}\exp{(2\beta_u)}du$ と書けるので
+\begin{align}
+    H_{\fbox{$\int_0^t\exp{(2\beta_u)}du$}}
+    = t
+    = \inf\{s\ge0:\int_0^s\exp{(2\beta_u)}du>\fbox{$\int_0^t\exp{(2\beta_u)}du$}\}
+\end{align}
+$\implies H_t = \inf\{s\ge0:\int_0^s\exp{(2\beta_u)}du>t\}.$
+$$
+\therefore 
+\log{\lvert B_t\rvert}
+= \beta_{H_t}
+= \beta_{\inf\{s\ge0:\int_0^s\exp{(2\beta_u)}du>t\}}.
+$$
+
+これより $\lvert B\rvert$ はlinear BM $\beta$ に依存して定まることがわかる．
+これは \DIFdelbegin \DIFdel{$(\lvert B_t\rvert, t\ge0)$ }\DIFdelend \DIFaddbegin \DIFadd{$(\lvert B_t\rvert)_{t\ge0}$ }\DIFaddend がMarkov過程，i.e. 2-dim. Bessel過程であることと関係している（Bessel過程の簡単な議論はExercise 6.24やSect. 8.4.3を参照）．
+
+一方，\DIFdelbegin \DIFdel{$\theta_t:=\arg B_t=\gamma_{H_t}\implies \theta=(\theta_t, t\ge0)$ }\DIFdelend \DIFaddbegin \DIFadd{$\theta_t:=\arg B_t=\gamma_{H_t}\implies \theta=(\theta_t)_{t\ge0}$ }\DIFaddend はMarkov過程でない．
+
+\begin{screen}
+    $\because)$（直感的な説明）
+    時刻 $t$ までの $\theta$ の過去の挙動は $\lvert B_t\rvert$ の現在の値に関する情報を与える（例えば $\theta_t$ が時刻 $t$ の直前に非常に高速に振動\DIFdelbegin \DIFdel{した}\DIFdelend \DIFaddbegin \DIFadd{する}\DIFaddend 場合，\DIFaddbegin \DIFadd{必然的に動径 }\DIFaddend $\lvert B_t\rvert$ は小さくなる\DIFaddbegin \DIFadd{（動径が大きいならば偏角への影響は少ないため}\DIFaddend ）\DIFdelbegin %DIFDELCMD < \nazo%%%
+\DIFdelend \DIFaddbegin \DIFadd{）}\DIFaddend ．
+    したがって過程 $\theta$ の未来の挙動に関する情報をも\DIFaddbegin \DIFadd{与える，つまり過去の挙動が未来の挙動に影響を}\DIFaddend 与えるため，Markov性が成り立たない．
+\end{screen}
+
+\end{document}
